@@ -1,0 +1,16 @@
+Constraints: [ToInt(float_var) == 3*int_var]
+Solving these constraints...
+        solvable: YES
+        model (solution):
+        * int_var = 0
+        * float_var = 0
+
+Adding more constraints...
+
+Constraints: [ToInt(float_var) == 3*int_var,
+ int_var > ToInt(float_var) - 50]
+Solving these constraints...
+        solvable: YES
+        model (solution):
+        * int_var = 0
+        * float_var = 0
