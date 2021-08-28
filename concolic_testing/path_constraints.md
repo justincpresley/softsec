@@ -1,6 +1,6 @@
 1.
 concrete values: float_var=4.4, int_var=10, res=[], temp_var=4
-constraints: temp_var=int(float_var), int(float_var) == 3 * int_var
+constraints: int(float_var) == 3 * int_var
 line found: 3,4
 
 2.
