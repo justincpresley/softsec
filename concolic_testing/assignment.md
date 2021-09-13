@@ -1,8 +1,6 @@
 # Workshop#1: Concolic Testing
 
-## Assigned Date: Aug 27, 2021
-
-## Due date: Upon discussion with class, Tuesday, 31st August 2021, AOE (Any Where on Earth)
+`Due: TODO (AoE) `
 
 ### Tasks
 

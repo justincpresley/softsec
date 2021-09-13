@@ -1,12 +1,10 @@
 # Workshop-2: Forensics in Machine Learning Code
 
-`Due: Tuesday, Sep 07, 2021 (AoE) `
-
+`Due: TODO (AoE) `
 
 ## Pick Any One  (Option-1 or Option-2)
 
 ### (Option-1) Tasks for Pythonistas
-
 Imagine this scenario: Dolly, a data science specialist at Tennessee Tech. University has written machine learning (ML) code in `ML.py`. The output is correct but she just learned about adverserial machine learning, which talks about how ML code can be attacked. She learned that
 ML models are susceptible to security issues:
 
@@ -18,7 +16,6 @@ for all provided ML examples. After writing the code, put in comments to justify
 
 
 ###  (Option-2) Tasks for Non-Python Users
-
 See the attached Zip file. This is a simple Bluetooth Android application written in Java. You need to add logging code in `app/src/main/java/com/mcuhq/simplebluetooth/` to assist the developer with forensics. Add Java-based logging code for all methods that you think are important to log in all Java files in `app/src/main/java/com/mcuhq/simplebluetooth/`. Use knowledge from the class on what things need to be logged and how.
 
 A few notes:
