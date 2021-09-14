@@ -80,16 +80,17 @@ def find_vars(l, file):
             line = f.readline()
             cnt += 1
 
-def print_vars(l):
-    for i, v in enumerate(l):
-        if v["found"]:
-            print(f"Security weakness name: {v['name']}")
-            print(f"Security weakness location: Variable '{v['var']}' in line {v['line']}")
-            print(f"Security weakness usage:")
-            for e in v["found"]:
-                print(f"\tfile {e['file']}, lines {e['lines']}")
-            if i < (len(l)-2):
-                print()
+def output_vars(l, file):
+    with open(file, "w") as f:
+        for i, v in enumerate(l):
+            if v["found"]:
+                f.write(f"Security weakness name: {v['name']}\n")
+                f.write(f"Security weakness location: Variable '{v['var']}' in line {v['line']}\n")
+                f.write(f"Security weakness usage:\n")
+                for e in v["found"]:
+                    f.write(f"\tfile {e['file']}, lines {e['lines']}\n")
+                if i < (len(l)-2):
+                    f.write("\n")
 
 def main():
     lists_of_values = []
@@ -102,7 +103,7 @@ def main():
     find_vars(lists_of_values, "Workshop3.play1.yaml")
     find_vars(lists_of_values, "Workshop3.play2.yaml")
 
-    print_vars(lists_of_values)
+    output_vars(lists_of_values, "output.md")
 
 if __name__=='__main__':
     main()
