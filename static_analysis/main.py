@@ -1,9 +1,11 @@
 import yaml
 
-def add_values(l, d):
+# Side / Helper Functions
+
+def find_vulnerability_values_in_dict(l, d):
     for k,v in d.items():
         if isinstance(v, dict):
-            add_values(l, v)
+            find_vulnerability_values_in_dict(l, v)
         else:
             if k is not None:
                 if "user" in k:
@@ -47,63 +49,71 @@ def add_values(l, d):
                         temp["found"] = []
                         l.append(temp)
 
-def detail_values(l, file):
-    with open(file) as f:
-        line = f.readline()
+# Given List [] and Input File ""
+def find_line_number_of_values(l, f):
+    with open(f) as fh:
+        line = fh.readline()
         cnt = 1
         while line:
             for i in l:
                 if i["var"] in line:
                     i["line"] = cnt
-            line = f.readline()
+            line = fh.readline()
             cnt += 1
 
-def find_vars(l, file):
-    with open(file) as f:
-        line = f.readline()
+# Main Functions
+
+# Given List [] and Input File ""
+def find_vulnerability_values(l, f):
+    with open(f) as fh:
+        data = yaml.load(fh, Loader=yaml.FullLoader)
+        find_vulnerability_values_in_dict(l, data)
+    find_line_number_of_values(l, f)
+
+# Given List [] and Input File ""
+def find_usage_of_values(l, f):
+    with open(f) as fh:
+        line = fh.readline()
         cnt = 1
         while line:
             for i in l:
                 if i["var"] in line:
                     found = False
                     for e in i["found"]:
-                        if file in e["file"]:
+                        if f in e["file"]:
                             e["lines"].append(cnt)
                             found = True
                             break
                     if not found:
                         temp = {}
-                        temp["file"] = file
+                        temp["file"] = f
                         temp["lines"] = []
                         temp["lines"].append(cnt)
                         i["found"].append(temp)
-            line = f.readline()
+            line = fh.readline()
             cnt += 1
 
-def output_vars(l, file):
-    with open(file, "w") as f:
+# Given List [] and Output File ""
+def output_values(l, f):
+    with open(f, "w") as fh:
         for i, v in enumerate(l):
             if v["found"]:
-                f.write(f"Security weakness name: {v['name']}\n")
-                f.write(f"Security weakness location: Variable '{v['var']}' in line {v['line']}\n")
-                f.write(f"Security weakness usage:\n")
+                fh.write(f"Security weakness name: {v['name']}\n")
+                fh.write(f"Security weakness location: Variable '{v['var']}' in line {v['line']}\n")
+                fh.write(f"Security weakness usage:\n")
                 for e in v["found"]:
-                    f.write(f"\tfile {e['file']}, lines {e['lines']}\n")
+                    fh.write(f"\tfile {e['file']}, lines {e['lines']}\n")
                 if i < (len(l)-2):
-                    f.write("\n")
+                    fh.write("\n")
 
 def main():
-    lists_of_values = []
-    with open('Workshop3.values.yaml') as f:
-        data = yaml.load(f, Loader=yaml.FullLoader)
-        add_values(lists_of_values, data)
+    value_storage = []
+    find_vulnerability_values(value_storage, "Workshop3.values.yaml")
 
-    detail_values(lists_of_values, "Workshop3.values.yaml")
+    find_usage_of_values(value_storage, "Workshop3.play1.yaml")
+    find_usage_of_values(value_storage, "Workshop3.play2.yaml")
 
-    find_vars(lists_of_values, "Workshop3.play1.yaml")
-    find_vars(lists_of_values, "Workshop3.play2.yaml")
-
-    output_vars(lists_of_values, "output.md")
+    output_values(value_storage, "output.md")
 
 if __name__=='__main__':
     main()
