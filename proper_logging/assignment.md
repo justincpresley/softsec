@@ -1,7 +1,5 @@
 # Workshop-2: Forensics in Machine Learning Code
 
-`Due: TODO (AoE) `
-
 ## Pick Any One  (Option-1 or Option-2)
 
 ### (Option-1) Tasks for Pythonistas

@@ -1,7 +1,5 @@
 # Workshop-3: Miniature Security Static Analysis for Ansible Manifests
 
-`Due: TODO (AoE) `
-
 ### Tasks
 1. Open up the `Workshop3.values.yaml` file to find out security weaknesses. To understand what security weakness you only need to look at Section 3.2 of this paper: https://arxiv.org/pdf/1907.07159.pdf
 2. After determining what types of security weaknesses occur for what variables in `Workshop3.values.yaml`, inspect where the variables appear in `Workshop3.play1.yaml` and `Workshop3.play2.yaml`.

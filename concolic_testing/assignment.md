@@ -1,7 +1,5 @@
 # Workshop#1: Concolic Testing
 
-`Due: TODO (AoE) `
-
 ### Tasks
 
 - Your task is to apply what you learned in the class on Aug 25, and apply it to the following program to generate ALL possible path constraints, and use a SAT solver of your choice to generate solutions. You will generate the path constraints manually.
