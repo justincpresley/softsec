@@ -1,8 +1,22 @@
+It is vital to test all modules / sub-modules of a program to ensure that all requirements
+are met. In this program, we only have one small module, simpleCalc. To test this, we need to
+ensure that functions (add, subtract, multiply, divide) have proper methods for handling every
+input possible.
+
+I did this by doing the following, in order for every single function.
+    * Random Valid (int/float) Input Testing: This ensures that it will operate successfully under normal conditions.
+    * Boundary Testing: This ensures that regardless of the value of the input, we get some response.
+    * Garbage Testing: This ensures that our functions are robust. Whatever we throw at it, we get a proper response.
+
+I made sure that we can change the testing in some way according to our needs. For now, you may change the 'times'
+variable in our main() function to increase how many operations happen in our Random Valid Input Testing.
+
+How to run: You can run this program by using python3 doing the following - `python3 test.py`
 
 
+Below is the Output of Running the Test:
 
-
-Below is the Output of running the test.
+```
 
 Testing simpleCalc for add.
         * Randomizing ints 3 times:
@@ -75,3 +89,5 @@ Testing simpleCalc for divide.
 
 ** ALL TESTS PASSED**
 simpleCalc is a usable simple calculator with no detected malformities other than the expected!
+
+```
