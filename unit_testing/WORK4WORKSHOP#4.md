@@ -1,4 +1,4 @@
-It is vital to test all modules / sub-modules of a program to ensure that all requirements
+It is vital to test all modules / sub-modules of a program to ensure that all security-requirements
 are met. In this program, we only have one small module, simpleCalc. To test this, we need to
 ensure that functions (add, subtract, multiply, divide) have proper methods for handling every
 input possible.
