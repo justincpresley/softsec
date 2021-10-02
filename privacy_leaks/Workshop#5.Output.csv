@@ -1,0 +1,4 @@
+zero-android,./FARMING_ANDROID_REPOS/zero-android/app/src/main/AndroidManifest.xml,219,read_calendar
+zero-android,./FARMING_ANDROID_REPOS/zero-android/app/src/main/AndroidManifest.xml,219,write_calendar
+zero-android,./FARMING_ANDROID_REPOS/zero-android/app/src/main/java/ekylibre/util/PermissionManager.java,219,read_calendar
+zero-android,./FARMING_ANDROID_REPOS/zero-android/app/src/main/java/ekylibre/util/PermissionManager.java,219,write_calendar

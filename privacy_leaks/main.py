@@ -7,8 +7,28 @@ privacy_list = [
     "receive_sms","read_sms","receive_wap_push","receive_mms","read_external_storage","write_external_storage"
 ]
 
-def detectDangerousJavaLeaks():
-    pass
+def makeCVS(ml, fname):
+    with open(fname, "w") as fhandle:
+        for subdir in ml:
+            for manifest in subdir["manifests"]:
+                for manifestleak in manifest["leaks"]:
+                    temp = subdir["subdir"] + "," + manifest["path"] + "," + str(manifest["lines"]) + "," + manifestleak + "\n"
+                    fhandle.write(temp)
+            for java in subdir["javas"]:
+                for javaleak in java["leaks"]:
+                    temp = subdir["subdir"] + "," + java["path"] + "," + str(java["lines"]) + "," + javaleak + "\n"
+                    fhandle.write(temp)
+
+def detectDangerousJavaLeaks(path):
+    res = []
+    with open(path, "r") as fhandle:
+        for leak in privacy_list:
+            for aline in fhandle:
+                temp = "Manifest.permission." + leak.upper()
+                if temp in aline:
+                    res.append(leak)
+                    break
+    return res
 def getJavaFilesHelper(subdir, l):
     for entry in os.scandir(subdir):
         if entry.is_file():
@@ -16,7 +36,9 @@ def getJavaFilesHelper(subdir, l):
                 temp = {}
                 temp["path"] = entry.path
                 temp["lines"] = sum(1 for _ in open(entry.path))
-                l.append(temp)
+                temp["leaks"] = detectDangerousJavaLeaks(entry.path)
+                if temp["leaks"]:
+                    l.append(temp)
         else:
             getJavaFilesHelper(entry.path,l)
 def getJavaFiles(subdir):
@@ -24,8 +46,16 @@ def getJavaFiles(subdir):
     getJavaFilesHelper(subdir, res)
     return res
 
-def detectDangerousManifestLeaks():
-    pass
+def detectDangerousManifestLeaks(path):
+    res = []
+    with open(path, "r") as fhandle:
+        for leak in privacy_list:
+            for aline in fhandle:
+                temp = "android.permission." + leak.upper()
+                if temp in aline:
+                    res.append(leak)
+                    break
+    return res
 def getManifestHelper(subdir, l):
     for entry in os.scandir(subdir):
         if entry.is_file():
@@ -33,7 +63,9 @@ def getManifestHelper(subdir, l):
                 temp = {}
                 temp["path"] = entry.path
                 temp["lines"] = sum(1 for _ in open(entry.path))
-                l.append(temp)
+                temp["leaks"] = detectDangerousManifestLeaks(entry.path)
+                if temp["leaks"]:
+                    l.append(temp)
         else:
             getManifestHelper(entry.path,l)
 def getManifest(subdir):
@@ -44,6 +76,7 @@ def getManifest(subdir):
 if __name__ == "__main__":
     main_list = []
     main_dir = "./FARMING_ANDROID_REPOS"
+    csv_name = "Workshop#5.Output.csv"
 
     print("Please wait while we process all these repositories.")
     for entry in os.scandir(main_dir):
@@ -56,5 +89,8 @@ if __name__ == "__main__":
             main_list.append(sub_list)
     print("Done processing all the repositories.")
 
-    print(main_list)
-    print(privacy_list)
+    makeCVS(main_list, csv_name)
+
+    print(f"Wrote privacy leak information in {csv_name}.")
+
+
