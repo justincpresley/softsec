@@ -7,17 +7,29 @@ privacy_list = [
     "receive_sms","read_sms","receive_wap_push","receive_mms","read_external_storage","write_external_storage"
 ]
 
+include_no_privacy_leaks = True
+
 def makeCVS(ml, fname):
     with open(fname, "w") as fhandle:
         for subdir in ml:
             for manifest in subdir["manifests"]:
-                for manifestleak in manifest["leaks"]:
-                    temp = subdir["subdir"] + "," + manifest["path"] + "," + str(manifest["lines"]) + "," + manifestleak + "\n"
-                    fhandle.write(temp)
+                if manifest["leaks"]:
+                    for manifestleak in manifest["leaks"]:
+                        temp = subdir["subdir"] + "," + manifest["path"] + "," + str(manifest["lines"]) + "," + manifestleak + "\n"
+                        fhandle.write(temp)
+                else:
+                    if include_no_privacy_leaks:
+                        temp = subdir["subdir"] + "," + manifest["path"] + "," + str(manifest["lines"]) + "," + "None" + "\n"
+                        fhandle.write(temp)
             for java in subdir["javas"]:
-                for javaleak in java["leaks"]:
-                    temp = subdir["subdir"] + "," + java["path"] + "," + str(java["lines"]) + "," + javaleak + "\n"
-                    fhandle.write(temp)
+                if java["leaks"]:
+                    for javaleak in java["leaks"]:
+                        temp = subdir["subdir"] + "," + java["path"] + "," + str(java["lines"]) + "," + javaleak + "\n"
+                        fhandle.write(temp)
+                else:
+                    if include_no_privacy_leaks:
+                        temp = subdir["subdir"] + "," + java["path"] + "," + str(java["lines"]) + "," + "None" + "\n"
+                        fhandle.write(temp)
 
 def detectDangerousJavaLeaks(path):
     res = []
@@ -37,8 +49,7 @@ def getJavaFilesHelper(subdir, l):
                 temp["path"] = entry.path
                 temp["lines"] = sum(1 for _ in open(entry.path))
                 temp["leaks"] = detectDangerousJavaLeaks(entry.path)
-                if temp["leaks"]:
-                    l.append(temp)
+                l.append(temp)
         else:
             getJavaFilesHelper(entry.path,l)
 def getJavaFiles(subdir):
@@ -64,8 +75,7 @@ def getManifestHelper(subdir, l):
                 temp["path"] = entry.path
                 temp["lines"] = sum(1 for _ in open(entry.path))
                 temp["leaks"] = detectDangerousManifestLeaks(entry.path)
-                if temp["leaks"]:
-                    l.append(temp)
+                l.append(temp)
         else:
             getManifestHelper(entry.path,l)
 def getManifest(subdir):
