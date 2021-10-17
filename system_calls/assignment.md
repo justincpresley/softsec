@@ -13,7 +13,7 @@ d. cd /WORKSHOP_STRACE/
 e. ls -al
 f. strace -h
 g. strace -tT python3 buggy.py 2> buggy-python.txt
-h. strace -tT python3 neutral.py 2> neutral-python.txt 	
+h. strace -tT python3 neutral.py 2> neutral-python.txt
 ```
 
 3. Write a program that will parse the two text files (buggy-python.txt and neutral-python.txt), and for both text files report
