@@ -34,6 +34,8 @@ def generate_output_for_strace_file(input_file, output_file):
             temp["num"] = 1
             temp["time"] = float(call["duration"])
             analysis_list.append(temp)
+    for temp in analysis_list:
+        temp["time"] = temp["time"] / temp["num"]
 
     with open(output_file, "w") as fhandle:
         for ele in analysis_list:
