@@ -1,0 +1,124 @@
+[
+    {
+        "FILE": "./ML-CODE/create_coco_tf_record.py",
+        "ALERTS": [
+            {
+                "SEVERITY": "MEDIUM",
+                "CONFIDENCE": "MEDIUM",
+                "NAME": "hardcoded_tmp_directory",
+                "LINE_NO": 74
+            }
+        ]
+    },
+    {
+        "FILE": "./ML-CODE/datasets.py",
+        "ALERTS": [
+            {
+                "SEVERITY": "MEDIUM",
+                "CONFIDENCE": "HIGH",
+                "NAME": "blacklist",
+                "LINE_NO": 55
+            }
+        ]
+    },
+    {
+        "FILE": "./ML-CODE/formatInput.py",
+        "ALERTS": [
+            {
+                "SEVERITY": "MEDIUM",
+                "CONFIDENCE": "HIGH",
+                "NAME": "blacklist",
+                "LINE_NO": 63
+            }
+        ]
+    },
+    {
+        "FILE": "./ML-CODE/generate_labeled_rnn_data.py",
+        "ALERTS": [
+            {
+                "SEVERITY": "MEDIUM",
+                "CONFIDENCE": "MEDIUM",
+                "NAME": "hardcoded_tmp_directory",
+                "LINE_NO": 33
+            }
+        ]
+    },
+    {
+        "FILE": "./ML-CODE/logger.py",
+        "ALERTS": [
+            {
+                "SEVERITY": "MEDIUM",
+                "CONFIDENCE": "HIGH",
+                "NAME": "blacklist",
+                "LINE_NO": 92
+            }
+        ]
+    },
+    {
+        "FILE": "./ML-CODE/make_splits_size-48-80_6class.py",
+        "ALERTS": [
+            {
+                "SEVERITY": "HIGH",
+                "CONFIDENCE": "HIGH",
+                "NAME": "start_process_with_a_shell",
+                "LINE_NO": 45
+            },
+            {
+                "SEVERITY": "HIGH",
+                "CONFIDENCE": "HIGH",
+                "NAME": "start_process_with_a_shell",
+                "LINE_NO": 49
+            }
+        ]
+    },
+    {
+        "FILE": "./ML-CODE/make_splits_size-48-80_8class.py",
+        "ALERTS": [
+            {
+                "SEVERITY": "HIGH",
+                "CONFIDENCE": "HIGH",
+                "NAME": "start_process_with_a_shell",
+                "LINE_NO": 44
+            },
+            {
+                "SEVERITY": "HIGH",
+                "CONFIDENCE": "HIGH",
+                "NAME": "start_process_with_a_shell",
+                "LINE_NO": 48
+            }
+        ]
+    },
+    {
+        "FILE": "./ML-CODE/run_pretraining.py",
+        "ALERTS": [
+            {
+                "SEVERITY": "MEDIUM",
+                "CONFIDENCE": "MEDIUM",
+                "NAME": "hardcoded_tmp_directory",
+                "LINE_NO": 186
+            }
+        ]
+    },
+    {
+        "FILE": "./ML-CODE/run_squad.py",
+        "ALERTS": [
+            {
+                "SEVERITY": "MEDIUM",
+                "CONFIDENCE": "HIGH",
+                "NAME": "blacklist",
+                "LINE_NO": 270
+            }
+        ]
+    },
+    {
+        "FILE": "./ML-CODE/SECTrainingIter.py",
+        "ALERTS": [
+            {
+                "SEVERITY": "MEDIUM",
+                "CONFIDENCE": "HIGH",
+                "NAME": "blacklist",
+                "LINE_NO": 129
+            }
+        ]
+    }
+]
