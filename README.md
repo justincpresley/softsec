@@ -12,3 +12,5 @@ The concepts that I worked on are seen below. Each with their own tasks to prove
  * [Statis Analysis](https://github.com/justincpresley/softsec/tree/master/static_analysis)
  * [System Calls](https://github.com/justincpresley/softsec/tree/master/system_calls)
  * [Unit Testing](https://github.com/justincpresley/softsec/tree/master/unit_testing)
+
+NOTE: This is repository is an achieve representing previous experience / knowledge.
