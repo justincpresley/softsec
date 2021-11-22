@@ -1,6 +1,6 @@
-# softsec - A wide-variety of important skills
+# softsec - A wide-variety of important security skills
 
-This repository was the center for storing all projects relating to the masters-level course Software and Systems Security, CSC 5585. This course was taken during my first senior semester and counted for my masters degree rather than my undergraduate degree.
+This repository was the center for storing all projects relating to the masters-level course **Software and Systems Security**, CSC 5585. This course was taken during my first senior semester.
 
 The concepts that I worked on are seen below. Each with their own tasks to prove my knowledge of the subject via action.
 
