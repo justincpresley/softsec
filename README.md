@@ -13,4 +13,4 @@ The concepts that I worked on are seen below. Each with their own tasks to prove
  * [System Calls](https://github.com/justincpresley/softsec/tree/master/system_calls)
  * [Unit Testing](https://github.com/justincpresley/softsec/tree/master/unit_testing)
 
-NOTE: This is repository is an achieve representing previous experience / knowledge.
+NOTE: This is repository is an archive representing previous experience / knowledge.
